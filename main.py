@@ -1,9 +1,12 @@
 import requests
-import os
+import configparser
 
 from send_email import send_email
 
-api_key = os.getenv("API_KEY")
+config = configparser.ConfigParser()
+config.read('config.ini')
+
+api_key = config['NEWS']['KEY']
 
 topic = "tesla"
 url = (f"https://newsapi.org/v2/everything?"
